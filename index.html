@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NewsVault — India's Premier News & Exam Books Platform</title>
+  <meta name="description" content="Subscribe to newspapers, read daily current affairs, and buy competitive exam books. ISRO, NASA, Political, Technology news and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="C:\Users\hp\OneDrive\Desktop\styles.css" />
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loader" class="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">NV</div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+</div>
+
+<!-- NOTIFICATION POPUP -->
+<div id="notif" class="notif-popup">
+  <i class="fas fa-bell notif-icon"></i>
+  <span class="notif-text">🎉 Get 30% OFF on Yearly Plans! Use code <strong>EXAM2025</strong></span>
+  <button class="notif-close" onclick="closeNotif()"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- NAVBAR -->
+<header id="navbar" class="navbar">
+  <div class="nav-container">
+    <div class="nav-brand">
+      <div class="brand-icon">NV</div>
+      <div class="brand-text">
+        <span class="brand-name">NewsVault</span>
+        <span class="brand-tagline">News · Books · Success</span>
+      </div>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active" onclick="navigateTo('home')">Home</a>
+      <a href="#news" class="nav-link" onclick="navigateTo('news')">News</a>
+      <a href="#books" class="nav-link" onclick="navigateTo('books')">Book Store</a>
+      <a href="#subscription" class="nav-link" onclick="navigateTo('subscription')">Plans</a>
+      <a href="#about" class="nav-link" onclick="navigateTo('about')">About</a>
+      <a href="#contact" class="nav-link" onclick="navigateTo('contact')">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn-icon" id="searchToggle" title="Search"><i class="fas fa-search"></i></button>
+      <button class="btn-icon" id="darkToggle" title="Dark Mode"><i class="fas fa-moon"></i></button>
+      <button class="btn-icon cart-btn" id="cartBtn" title="Cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+      <button class="btn-primary nav-cta" onclick="navigateTo('subscription')">Subscribe</button>
+      <button class="nav-hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="nav-search-bar" id="navSearchBar">
+    <div class="search-inner">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search news, books, topics..." id="globalSearch" oninput="globalSearchFn(this.value)" />
+      <button onclick="closeSearch()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</header>
+
+<!-- PAGES CONTAINER -->
+<main id="pagesContainer">
+
+<!-- ===================== HOME PAGE ===================== -->
+<section id="home" class="page active">
+
+  <!-- HERO SLIDER -->
+  <div class="hero">
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero-slide active" style="--bg: linear-gradient(135deg,#0a1628 0%,#1a3a6b 60%,#c0392b 100%)">
+        <div class="hero-content">
+          <span class="hero-badge"><i class="fas fa-satellite"></i> ISRO Mission Update</span>
+          <h1 class="hero-title">Chandrayaan-4 Mission: India Reaches New Heights in Space</h1>
+          <p class="hero-desc">India's space agency achieves another milestone with the successful lunar sample return mission, marking a new era for Indian space exploration.</p>
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="openArticle(0)">Read Full Story <i class="fas fa-arrow-right"></i></button>
+            <button class="btn-ghost" onclick="navigateTo('subscription')">Subscribe Now</button>
+          </div>
+          <div class="hero-meta"><i class="fas fa-clock"></i> 2 hours ago &nbsp;|&nbsp; <i class="fas fa-eye"></i> 48,291 views</div>
+        </div>
+        <div class="hero-img-block">
+          <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&h=400&fit=crop" alt="Space" />
+        </div>
+      </div>
+      <div class="hero-slide" style="--bg: linear-gradient(135deg,#0a1628 0%,#1a4a2e 60%,#e67e22 100%)">
+        <div class="hero-content">
+          <span class="hero-badge"><i class="fas fa-landmark"></i> Government Scheme</span>
+          <h1 class="hero-title">PM Digital India 3.0: ₹1 Lakh Crore Boost to Rural Connectivity</h1>
+          <p class="hero-desc">The government announces a landmark scheme to provide high-speed internet to 6 lakh villages across India by 2026.</p>
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="openArticle(1)">Read Full Story <i class="fas fa-arrow-right"></i></button>
+            <button class="btn-ghost" onclick="navigateTo('books')">Exam Books</button>
+          </div>
+          <div class="hero-meta"><i class="fas fa-clock"></i> 5 hours ago &nbsp;|&nbsp; <i class="fas fa-eye"></i> 32,100 views</div>
+        </div>
+        <div class="hero-img-block">
+          <img src="https://images.unsplash.com/photo-1529079018732-bdb88456f8c2?w=600&h=400&fit=crop" alt="Government" />
+        </div>
+      </div>
+      <div class="hero-slide" style="--bg: linear-gradient(135deg,#0a1628 0%,#2c1654 60%,#c0392b 100%)">
+        <div class="hero-content">
+          <span class="hero-badge"><i class="fas fa-microchip"></i> Technology</span>
+          <h1 class="hero-title">AI Revolution: India Launches National AI Mission with $1.2 Billion Fund</h1>
+          <p class="hero-desc">The National AI Mission aims to build indigenous AI models and position India as a global AI powerhouse by 2030.</p>
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="openArticle(2)">Read Full Story <i class="fas fa-arrow-right"></i></button>
+            <button class="btn-ghost" onclick="navigateTo('subscription')">Get Premium</button>
+          </div>
+          <div class="hero-meta"><i class="fas fa-clock"></i> 1 day ago &nbsp;|&nbsp; <i class="fas fa-eye"></i> 61,430 views</div>
+        </div>
+        <div class="hero-img-block">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&h=400&fit=crop" alt="AI" />
+        </div>
+      </div>
+    </div>
+    <div class="hero-controls">
+      <button class="hero-prev" onclick="slideHero(-1)"><i class="fas fa-chevron-left"></i></button>
+      <div class="hero-dots" id="heroDots">
+        <button class="hero-dot active" onclick="goSlide(0)"></button>
+        <button class="hero-dot" onclick="goSlide(1)"></button>
+        <button class="hero-dot" onclick="goSlide(2)"></button>
+      </div>
+      <button class="hero-next" onclick="slideHero(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+
+  <!-- BREAKING NEWS TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-label"><i class="fas fa-bolt"></i> BREAKING</div>
+    <div class="ticker-wrap">
+      <div class="ticker-track" id="tickerTrack">
+        <span>🚀 ISRO successfully tests Gaganyaan crew module ejection system</span>
+        <span>🗳️ Election Commission announces schedule for 5 state assemblies</span>
+        <span>🌙 NASA's Artemis III mission postponed to 2026</span>
+        <span>📈 Sensex surges 800 points; Nifty crosses 24,500 mark</span>
+        <span>🏏 India wins series against Australia 3-1 at home</span>
+        <span>🎓 UPSC Civil Services Final Results 2024 declared; 1,016 candidates selected</span>
+        <span>💊 New AIIMS campus inaugurated in Rajkot by PM Modi</span>
+        <span>🌊 IMD issues red alert for heavy rainfall in Kerala, Karnataka</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LATEST NEWS SECTION -->
+  <section class="section" id="latestSection">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Today's Top Stories</div>
+          <h2 class="section-title">Latest News</h2>
+        </div>
+        <button class="btn-outline" onclick="navigateTo('news')">View All <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="news-grid" id="latestNewsGrid"></div>
+    </div>
+  </section>
+
+  <!-- CATEGORY STRIPS -->
+  <section class="section cat-strip-section">
+    <div class="container">
+      <div class="cat-strips">
+        <div class="cat-strip isro-strip">
+          <div class="cat-strip-head">
+            <i class="fas fa-rocket"></i>
+            <h3>ISRO & NASA</h3>
+            <button onclick="filterNews('space')">More <i class="fas fa-arrow-right"></i></button>
+          </div>
+          <div class="cat-strip-items" id="isroStrip"></div>
+        </div>
+        <div class="cat-strip pol-strip">
+          <div class="cat-strip-head">
+            <i class="fas fa-landmark"></i>
+            <h3>Political</h3>
+            <button onclick="filterNews('political')">More <i class="fas fa-arrow-right"></i></button>
+          </div>
+          <div class="cat-strip-items" id="polStrip"></div>
+        </div>
+        <div class="cat-strip tech-strip">
+          <div class="cat-strip-head">
+            <i class="fas fa-microchip"></i>
+            <h3>Technology</h3>
+            <button onclick="filterNews('technology')">More <i class="fas fa-arrow-right"></i></button>
+          </div>
+          <div class="cat-strip-items" id="techStrip"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRENT AFFAIRS -->
+  <section class="section current-affairs-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Daily Dose</div>
+          <h2 class="section-title">Current Affairs</h2>
+        </div>
+        <div class="date-filter">
+          <input type="date" id="dateFilter" onchange="filterByDate(this.value)" />
+          <button class="btn-outline" onclick="filterByDate('')">Today</button>
+        </div>
+      </div>
+      <div class="ca-grid" id="currentAffairsGrid"></div>
+    </div>
+  </section>
+
+  <!-- FEATURED BOOKS -->
+  <section class="section books-home-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Ace Your Exam</div>
+          <h2 class="section-title">Featured Exam Books</h2>
+        </div>
+        <button class="btn-outline" onclick="navigateTo('books')">All Books <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="books-grid" id="homeBooksGrid"></div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIPTION TEASER -->
+  <section class="section sub-teaser">
+    <div class="container">
+      <div class="sub-teaser-inner">
+        <div class="sub-teaser-text">
+          <div class="section-label">Never Miss a Story</div>
+          <h2>Choose Your Subscription Plan</h2>
+          <p>Get unlimited access to news, current affairs, and premium exam resources. Cancel anytime.</p>
+          <ul class="sub-benefits">
+            <li><i class="fas fa-check-circle"></i> Unlimited article access</li>
+            <li><i class="fas fa-check-circle"></i> Daily current affairs PDF</li>
+            <li><i class="fas fa-check-circle"></i> Exclusive exam materials</li>
+            <li><i class="fas fa-check-circle"></i> Ad-free experience</li>
+          </ul>
+          <button class="btn-primary large" onclick="navigateTo('subscription')">View All Plans <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="sub-plans-preview" id="subPlansPreview"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-head center">
+        <div>
+          <div class="section-label">What They Say</div>
+          <h2 class="section-title">Success Stories</h2>
+        </div>
+      </div>
+      <div class="testimonials-grid" id="testimonialsGrid"></div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-inner">
+        <i class="fas fa-envelope-open-text nl-icon"></i>
+        <div>
+          <h2>Get Current Affairs in Your Inbox</h2>
+          <p>Join 4 lakh+ students who never miss a daily update.</p>
+        </div>
+        <div class="nl-form">
+          <input type="email" id="nlEmail" placeholder="Enter your email address" />
+          <button class="btn-primary" onclick="subscribeNewsletter()">Subscribe Free</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section><!-- END HOME PAGE -->
+
+<!-- ===================== NEWS PAGE ===================== -->
+<section id="news" class="page">
+  <div class="page-hero news-page-hero">
+    <div class="container">
+      <h1>News Articles</h1>
+      <p>Browse all categories — date-wise, topic-wise, and more</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="news-page-layout">
+      <!-- Filters Sidebar -->
+      <aside class="news-sidebar">
+        <div class="sidebar-card">
+          <h4>Search</h4>
+          <div class="sidebar-search">
+            <input type="text" id="newsSearch" placeholder="Search articles..." oninput="filterArticles()" />
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h4>Categories</h4>
+          <div class="cat-filters" id="catFilters">
+            <button class="cat-filter active" data-cat="all" onclick="setNewsCat(this,'all')">All</button>
+            <button class="cat-filter" data-cat="space" onclick="setNewsCat(this,'space')">🚀 Space</button>
+            <button class="cat-filter" data-cat="political" onclick="setNewsCat(this,'political')">🏛️ Political</button>
+            <button class="cat-filter" data-cat="technology" onclick="setNewsCat(this,'technology')">💻 Technology</button>
+            <button class="cat-filter" data-cat="scheme" onclick="setNewsCat(this,'scheme')">📋 Gov. Schemes</button>
+            <button class="cat-filter" data-cat="current" onclick="setNewsCat(this,'current')">📰 Current Affairs</button>
+            <button class="cat-filter" data-cat="education" onclick="setNewsCat(this,'education')">🎓 Education</button>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <h4>Filter by Date</h4>
+          <input type="date" id="newsDateFilter" onchange="filterArticles()" class="date-input-full" />
+        </div>
+        <div class="sidebar-card trending-sidebar">
+          <h4><i class="fas fa-fire"></i> Trending</h4>
+          <div id="trendingSidebar"></div>
+        </div>
+      </aside>
+
+      <!-- Articles Main -->
+      <div class="news-main">
+        <div class="news-results-bar">
+          <span id="resultsCount">Showing all articles</span>
+          <select id="sortSelect" onchange="filterArticles()">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="popular">Most Popular</option>
+          </select>
+        </div>
+        <div class="articles-grid" id="articlesGrid"></div>
+        <div class="load-more-wrap">
+          <button class="btn-outline large" id="loadMoreBtn" onclick="loadMoreArticles()">Load More Articles</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ARTICLE DETAIL PAGE ===================== -->
+<section id="articleDetail" class="page">
+  <div class="container">
+    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back</button>
+    <div class="article-detail-layout">
+      <article class="article-full" id="articleFull"></article>
+      <aside class="article-sidebar">
+        <div class="sidebar-card">
+          <h4>Related Articles</h4>
+          <div id="relatedArticles"></div>
+        </div>
+        <div class="sidebar-card sub-prompt">
+          <h4>📰 Go Premium</h4>
+          <p>Unlock all articles + PDF downloads + exam resources</p>
+          <button class="btn-primary full" onclick="navigateTo('subscription')">Subscribe Now</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BOOKS PAGE ===================== -->
+<section id="books" class="page">
+  <div class="page-hero books-page-hero">
+    <div class="container">
+      <h1>Competitive Exam Books</h1>
+      <p>UPSC · SSC · Banking · Railways · State PSC · Defence</p>
+    </div>
+  </div>
+  <div class="container">
+    <!-- Books Filters -->
+    <div class="books-filter-bar">
+      <div class="books-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="bookSearch" placeholder="Search books, authors, exams..." oninput="filterBooks()" />
+      </div>
+      <div class="book-cats" id="bookCats">
+        <button class="cat-filter active" data-bcat="all" onclick="setBookCat(this,'all')">All</button>
+        <button class="cat-filter" data-bcat="upsc" onclick="setBookCat(this,'upsc')">UPSC</button>
+        <button class="cat-filter" data-bcat="ssc" onclick="setBookCat(this,'ssc')">SSC</button>
+        <button class="cat-filter" data-bcat="banking" onclick="setBookCat(this,'banking')">Banking</button>
+        <button class="cat-filter" data-bcat="railway" onclick="setBookCat(this,'railway')">Railways</button>
+        <button class="cat-filter" data-bcat="defence" onclick="setBookCat(this,'defence')">Defence</button>
+        <button class="cat-filter" data-bcat="state" onclick="setBookCat(this,'state')">State PSC</button>
+      </div>
+      <select id="bookSort" onchange="filterBooks()">
+        <option value="popular">Most Popular</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="newest">Newest</option>
+      </select>
+    </div>
+
+    <!-- Bestsellers Banner -->
+    <div class="bestsellers-banner" id="bestsellersRow">
+      <div class="bs-label"><i class="fas fa-trophy"></i> Bestsellers</div>
+      <div class="bs-books" id="bsBooksRow"></div>
+    </div>
+
+    <div class="books-results-bar">
+      <span id="booksCount">Loading books...</span>
+    </div>
+    <div class="books-grid-full" id="booksGridFull"></div>
+  </div>
+</section>
+
+<!-- ===================== BOOK DETAIL PAGE ===================== -->
+<section id="bookDetail" class="page">
+  <div class="container">
+    <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i> Back to Books</button>
+    <div id="bookDetailContent"></div>
+  </div>
+</section>
+
+<!-- ===================== SUBSCRIPTION PAGE ===================== -->
+<section id="subscription" class="page">
+  <div class="page-hero sub-page-hero">
+    <div class="container">
+      <h1>Subscription Plans</h1>
+      <p>Simple pricing. Incredible value. Cancel anytime.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="sub-toggle-wrap">
+      <span>Monthly</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="billingToggle" onchange="toggleBilling()" />
+        <span class="toggle-slider"></span>
+      </label>
+      <span>Yearly <span class="badge-save">Save 40%</span></span>
+    </div>
+    <div class="plans-grid" id="plansGrid"></div>
+    <div class="sub-benefits-section">
+      <h2 class="center-text">Everything Included in Your Plan</h2>
+      <div class="benefits-grid" id="benefitsGrid"></div>
+    </div>
+    <div class="faq-section">
+      <h2 class="center-text">Frequently Asked Questions</h2>
+      <div class="faq-grid" id="faqGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LOGIN/REGISTER PAGE ===================== -->
+<section id="login" class="page">
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="brand-icon small">NV</div>
+        <span>NewsVault</span>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="loginTab" onclick="switchAuth('login')">Login</button>
+        <button class="auth-tab" id="registerTab" onclick="switchAuth('register')">Register</button>
+      </div>
+      <!-- Login Form -->
+      <div id="loginForm" class="auth-form">
+        <h2>Welcome Back!</h2>
+        <p class="auth-sub">Sign in to your NewsVault account</p>
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="input-wrap"><i class="fas fa-envelope"></i><input type="email" id="loginEmail" placeholder="you@email.com" /></div>
+          <span class="err-msg" id="loginEmailErr"></span>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap"><i class="fas fa-lock"></i><input type="password" id="loginPass" placeholder="Your password" /><button class="pass-toggle" onclick="togglePass('loginPass',this)"><i class="fas fa-eye"></i></button></div>
+          <span class="err-msg" id="loginPassErr"></span>
+        </div>
+        <div class="form-row">
+          <label class="check-label"><input type="checkbox" /> Remember me</label>
+          <a href="#" class="forgot-link">Forgot Password?</a>
+        </div>
+        <button class="btn-primary full large" onclick="validateLogin()">Sign In</button>
+        <div class="social-auth">
+          <p>Or continue with</p>
+          <div class="social-btns">
+            <button class="social-btn google"><i class="fab fa-google"></i> Google</button>
+            <button class="social-btn facebook"><i class="fab fa-facebook"></i> Facebook</button>
+          </div>
+        </div>
+      </div>
+      <!-- Register Form -->
+      <div id="registerForm" class="auth-form hidden">
+        <h2>Create Account</h2>
+        <p class="auth-sub">Join 4 lakh+ students on NewsVault</p>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>First Name</label>
+            <div class="input-wrap"><i class="fas fa-user"></i><input type="text" id="regFirst" placeholder="Rahul" /></div>
+            <span class="err-msg" id="regFirstErr"></span>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <div class="input-wrap"><i class="fas fa-user"></i><input type="text" id="regLast" placeholder="Sharma" /></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <div class="input-wrap"><i class="fas fa-envelope"></i><input type="email" id="regEmail" placeholder="rahul@email.com" /></div>
+          <span class="err-msg" id="regEmailErr"></span>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <div class="input-wrap"><i class="fas fa-phone"></i><input type="tel" id="regPhone" placeholder="10-digit mobile" /></div>
+          <span class="err-msg" id="regPhoneErr"></span>
+        </div>
+        <div class="form-group">
+          <label>Exam Preparing For</label>
+          <div class="input-wrap"><i class="fas fa-graduation-cap"></i>
+            <select id="regExam"><option value="">Select exam</option><option>UPSC</option><option>SSC CGL</option><option>IBPS PO</option><option>Railway NTPC</option><option>State PSC</option><option>Defence/NDA</option></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap"><i class="fas fa-lock"></i><input type="password" id="regPass" placeholder="Min 8 characters" /><button class="pass-toggle" onclick="togglePass('regPass',this)"><i class="fas fa-eye"></i></button></div>
+          <span class="err-msg" id="regPassErr"></span>
+        </div>
+        <div class="form-group">
+          <label class="check-label"><input type="checkbox" id="regTerms" /> I agree to <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+          <span class="err-msg" id="regTermsErr"></span>
+        </div>
+        <button class="btn-primary full large" onclick="validateRegister()">Create Free Account</button>
+      </div>
+    </div>
+    <div class="auth-info">
+      <h2>Start Your Success Journey</h2>
+      <ul class="auth-features">
+        <li><i class="fas fa-check-circle"></i> 10,000+ current affairs articles</li>
+        <li><i class="fas fa-check-circle"></i> 500+ competitive exam books</li>
+        <li><i class="fas fa-check-circle"></i> Daily news digest</li>
+        <li><i class="fas fa-check-circle"></i> Mock test resources</li>
+        <li><i class="fas fa-check-circle"></i> 4 lakh+ active students</li>
+      </ul>
+      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop" alt="Students" class="auth-img" />
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT PAGE ===================== -->
+<section id="about" class="page">
+  <div class="page-hero about-page-hero">
+    <div class="container">
+      <h1>About NewsVault</h1>
+      <p>India's Most Trusted News & Exam Preparation Platform</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">Our Story</div>
+        <h2>Empowering India's Aspirants Since 2018</h2>
+        <p>NewsVault was founded with a singular mission — to make quality news and exam preparation resources accessible to every student across India, from metro cities to remote villages.</p>
+        <p>We curate, verify, and present news from trusted sources — from ISRO's latest missions to government schemes, technology breakthroughs to political developments — all in one place.</p>
+        <p>With over 4 lakh+ subscribers and 500+ curated exam books, we are the go-to platform for UPSC, SSC, Banking, and Railway aspirants.</p>
+        <div class="about-stats">
+          <div class="stat-item"><div class="stat-num">4L+</div><div class="stat-lab">Subscribers</div></div>
+          <div class="stat-item"><div class="stat-num">10K+</div><div class="stat-lab">Articles</div></div>
+          <div class="stat-item"><div class="stat-num">500+</div><div class="stat-lab">Books</div></div>
+          <div class="stat-item"><div class="stat-num">98%</div><div class="stat-lab">Satisfaction</div></div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500&h=400&fit=crop" alt="NewsVault Team" />
+      </div>
+    </div>
+    <div class="team-section">
+      <h2 class="center-text">Meet Our Team</h2>
+      <div class="team-grid" id="teamGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT PAGE ===================== -->
+<section id="contact" class="page">
+  <div class="page-hero contact-page-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you. Reach out anytime.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-form-wrap">
+        <h2>Send a Message</h2>
+        <div class="form-group">
+          <label>Full Name</label>
+          <div class="input-wrap"><i class="fas fa-user"></i><input type="text" id="cName" placeholder="Your full name" /></div>
+          <span class="err-msg" id="cNameErr"></span>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="input-wrap"><i class="fas fa-envelope"></i><input type="email" id="cEmail" placeholder="your@email.com" /></div>
+          <span class="err-msg" id="cEmailErr"></span>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <div class="input-wrap"><i class="fas fa-tag"></i>
+            <select id="cSubject"><option>Subscription Inquiry</option><option>Book Order</option><option>Technical Support</option><option>Feedback</option><option>Partnership</option></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="cMessage" rows="5" placeholder="Write your message here..."></textarea>
+          <span class="err-msg" id="cMsgErr"></span>
+        </div>
+        <button class="btn-primary large" onclick="submitContact()">Send Message <i class="fas fa-paper-plane"></i></button>
+      </div>
+      <div class="contact-info-wrap">
+        <h2>Get In Touch</h2>
+        <div class="contact-info-items">
+          <div class="ci-item"><div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div><div><strong>Address</strong><p>NewsVault Towers, Sector 62, Noida, Uttar Pradesh — 201301</p></div></div>
+          <div class="ci-item"><div class="ci-icon"><i class="fas fa-phone"></i></div><div><strong>Phone</strong><p>+91 98765 43210<br/>+91 11 4567 8900</p></div></div>
+          <div class="ci-item"><div class="ci-icon"><i class="fas fa-envelope"></i></div><div><strong>Email</strong><p>support@newsvault.in<br/>books@newsvault.in</p></div></div>
+          <div class="ci-item"><div class="ci-icon"><i class="fas fa-clock"></i></div><div><strong>Hours</strong><p>Mon–Sat: 9:00 AM – 6:00 PM<br/>Sunday: 10:00 AM – 3:00 PM</p></div></div>
+        </div>
+        <div class="contact-social">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#" class="social-link fb"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link tw"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link yt"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link ig"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link tg"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button onclick="closeCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty"><i class="fas fa-shopping-cart"></i><p>Your cart is empty</p></div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">Total: <strong id="cartTotal">₹0</strong></div>
+    <button class="btn-primary full" onclick="checkout()">Proceed to Checkout <i class="fas fa-arrow-right"></i></button>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3>Complete Payment</h3>
+      <button onclick="closePayModal()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="payModalBody"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo"><span class="brand-icon">NV</span><span>NewsVault</span></div>
+          <p>India's most trusted platform for news, current affairs, and competitive exam preparation resources.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#" onclick="navigateTo('home')">Home</a></li>
+            <li><a href="#" onclick="navigateTo('news')">News Articles</a></li>
+            <li><a href="#" onclick="navigateTo('books')">Book Store</a></li>
+            <li><a href="#" onclick="navigateTo('subscription')">Plans & Pricing</a></li>
+            <li><a href="#" onclick="navigateTo('about')">About Us</a></li>
+            <li><a href="#" onclick="navigateTo('contact')">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Exam Categories</h4>
+          <ul>
+            <li><a href="#">UPSC Civil Services</a></li>
+            <li><a href="#">SSC CGL / CHSL</a></li>
+            <li><a href="#">IBPS PO / Clerk</a></li>
+            <li><a href="#">Railway NTPC / Group D</a></li>
+            <li><a href="#">State PSC</a></li>
+            <li><a href="#">Defence / NDA / CDS</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+          <div class="footer-payment-icons">
+            <h4 style="margin-top:1rem">We Accept</h4>
+            <div class="pay-icons">
+              <span class="pay-icon"><i class="fab fa-cc-visa"></i></span>
+              <span class="pay-icon"><i class="fab fa-cc-mastercard"></i></span>
+              <span class="pay-icon"><i class="fab fa-google-pay"></i></span>
+              <span class="pay-icon"><i class="fas fa-mobile-alt"></i> UPI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2025 NewsVault. All rights reserved. Made with <i class="fas fa-heart" style="color:#e74c3c"></i> for India's aspirants.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+
+<script src="C:\Users\hp\OneDrive\Desktop\script.js"></script>
+</body>
+</html>
